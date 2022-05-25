@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,6 +8,7 @@
  * @link        http://www.webjump.com.br
  *
  */
+
 namespace Webjump\Braspag\Pagador\Transaction;
 
 use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as ActionsAuthRequest;
@@ -17,6 +19,7 @@ use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\Reque
 use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
@@ -84,4 +87,10 @@ interface FacadeInterface
      * @return mixed
      */
     public function sendSplitPaymentGetSubordinate(PaymentSplitGetSubordinateRequest $request);
+
+    /**
+     * @param PixRequest $request
+     * @return SalesCommand
+     */
+    public function sendPix(PixRequest $request);
 }

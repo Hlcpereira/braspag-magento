@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,12 @@
  * @link        http://www.webjump.com.br
  *
  */
+
 namespace Webjump\Braspag\Factories;
 
 use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Response as BoletoResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Pix\Send\Response as PixResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response as CreditCardAntiFraudResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
@@ -38,6 +41,8 @@ class ResponseFactory
     const CLASS_TYPE_CREDIT_CART_VELOCITY_REASONS = 'velocityReasons';
     const CLASS_TYPE_CREDIT_CART_AVS = 'avs';
     const CLASS_TYPE_BOLETO_PAYMENT_SPLIT = 'boletoPaymentSplit';
+    const CLASS_TYPE_PIX = 'pix';
+    const CLASS_TYPE_PIX_PAYMENT_SPLIT = 'pixPaymentSplit';
 
     public static function make(array $data, $type)
     {
@@ -95,6 +100,10 @@ class ResponseFactory
 
         if ($type === self::CLASS_TYPE_CREDIT_CART_AVS) {
             return new CreditCardVAvsResponse($data);
+        }
+
+        if ($type === self::CLASS_TYPE_PIX) {
+            return new PixResponse($data);
         }
     }
 }

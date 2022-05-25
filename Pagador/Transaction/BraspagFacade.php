@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,6 +8,7 @@
  * @link        http://www.webjump.com.br
  *
  */
+
 namespace Webjump\Braspag\Pagador\Transaction;
 
 use Webjump\Braspag\Factories\Auth3Ds20TokenCommandFactory;
@@ -26,6 +28,7 @@ use Webjump\Braspag\Factories\CaptureCommandFactory;
 use Webjump\Braspag\Factories\DebitCardRequestFactory;
 use Webjump\Braspag\Factories\GetCommandFactory;
 use Webjump\Braspag\Factories\VoidCommandFactory;
+use Webjump\Braspag\Factories\PixRequestFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
@@ -35,6 +38,7 @@ use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\Reque
 use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
 use Webjump\Braspag\Factories\SalesCommandFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
@@ -153,6 +157,16 @@ class BraspagFacade implements FacadeInterface
     public function sendSplitPaymentGetSubordinate(PaymentSplitGetSubordinateRequest $request)
     {
         $request = PaymentSplitGetSubordinateCommandFactory::make(PaymentSplitGetSubordinateRequestFactory::make($request))->getResult();
+        return $request;
+    }
+
+    /**
+     * @param PixRequest $request
+     * @return SalesCommand
+     */
+    public function sendPix(PixRequest $request)
+    {
+        $request = SalesCommandFactory::make(PixRequestFactory::make($request))->getResult();
         return $request;
     }
 }

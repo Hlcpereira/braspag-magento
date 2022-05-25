@@ -43,11 +43,24 @@ class LoggerFactory implements LoggerFactoryInterface
     {
         $headers = "";
         foreach ($request->getHeaders() as $name => $values) {
-            $headers .= $name ." : " . implode(", ", $values)." ";
+            $qtyChar = 0;
+            if($name == 'MerchantKey')
+            {
+                $qtyChar = strlen($values[0]);
+            }
+            if($qtyChar == 0)
+            {
+                $headers .= $name ." : " . implode(", ", $values)." ";
+            }
+            if($qtyChar > 0)
+            {
+                $repeatChar = str_repeat("*", $qtyChar);
+                $headers .= $name ." : " . $repeatChar;
+            }
         }
-        $patterns = array('#\"cardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"securityCode\":\"(.*?)\"\,#');
-        $replacements = array('"cardNumber":"************$2",', '"securityCode":"***",');
-        
+        $patterns = array('#\"CardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"SecurityCode\"\:\"(.*?)\"\,#');
+        $replacements = array('"CardNumber":"************$2",', '"SecurityCode":"***",');
+
         $bodyString = preg_replace($patterns, $replacements, $request->getBody()->__toString());
         return $request->getRequestTarget()." >>>>>>>> ".$request->getMethod(). " " . $headers . " " .$bodyString."\n";
     }
@@ -64,4 +77,5 @@ class LoggerFactory implements LoggerFactoryInterface
         }
         return $response->getStatusCode()." <<<<<<<< ". " " . $headers . " " .$response->getBody()->__toString()."\n";
     }
+
 }

@@ -13,6 +13,7 @@ use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Factories\SalesFactory;
 use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Request as BoletoRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\Pix\Send\Request as PixRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Request as SplitPaymentTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request as DebitRequest;
@@ -44,6 +45,10 @@ class SalesCommand extends CommandAbstract
 
         if ($this->request instanceof DebitRequest) {
             $type = ResponseFactory::CLASS_TYPE_DEBIT_CARD;
+        }
+
+        if ($this->request instanceof PixRequest ) {
+            $type = ResponseFactory::CLASS_TYPE_PIX;
         }
 
         $this->result = ResponseFactory::make($this->getResponseToArray($response), $type);
