@@ -1,5 +1,5 @@
 {
-  "name": "webjump/braspagpagador-sdk-adapter",
+  "name": "braspag/braspagpagador-sdk-adapter",
   "type": "library",
   "description": "Braspag API PHP SDK",
   "keywords": [
