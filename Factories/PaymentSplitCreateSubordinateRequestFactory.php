@@ -9,10 +9,10 @@
  *
  */
 
-namespace Webjump\Braspag\Factories;
+namespace Braspag\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\CreateSubordinate\Request;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as Data;
+use Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\CreateSubordinate\Request;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as Data;
 
 class PaymentSplitCreateSubordinateRequestFactory
 {
