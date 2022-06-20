@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2019 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Http\Services\PaymentSplit;
 
-use Webjump\Braspag\Pagador\Http\Services\ServiceAbstract;
-use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
+namespace Braspag\Braspag\Pagador\Http\Services\PaymentSplit;
+
+use Braspag\Braspag\Pagador\Http\Services\ServiceAbstract;
+use Braspag\Braspag\Pagador\Http\Services\ServiceInterface;
 
 class TransactionPost extends ServiceAbstract implements ServiceInterface
 {

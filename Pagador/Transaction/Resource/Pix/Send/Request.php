@@ -9,11 +9,11 @@
  *
  */
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Pix\Send;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\Pix\Send;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as Data;
-use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as Data;
+use Braspag\Braspag\Factories\PaymentSplitRequestFactory;
 
 class Request extends RequestAbstract
 {

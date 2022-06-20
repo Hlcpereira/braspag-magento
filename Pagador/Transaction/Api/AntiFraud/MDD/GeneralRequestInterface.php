@@ -1,7 +1,6 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\MDD;
-
+namespace Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\MDD;
 
 interface GeneralRequestInterface
 {

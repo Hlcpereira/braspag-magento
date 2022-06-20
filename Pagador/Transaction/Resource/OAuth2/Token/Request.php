@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as Data;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\OAuth2\Token;
+
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -43,7 +45,7 @@ class Request extends RequestAbstract
         $this->params = [
             'headers' => [
                 'Content-Type' => self::CONTENT_TYPE_APPLICATION_X_WWW_FORM_URLENCODED,
-                'Authorization' => "Basic ".$this->data->getAccessToken()
+                'Authorization' => "Basic " . $this->data->getAccessToken()
             ],
             'form_params' => [
                 'grant_type' => 'client_credentials'

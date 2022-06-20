@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,12 +8,12 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs;
 
+namespace Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs;
 
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Avs\RequestInterface as Data;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Avs\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -32,7 +33,7 @@ class Request extends RequestAbstract
     {
         $this->params = [
             'Cpf' => $this->data->getCpf(),
-            'ZipCode' =>$this->data->getZipCode(),
+            'ZipCode' => $this->data->getZipCode(),
             'Street' => $this->data->getStreet(),
             'Number' => $this->data->getNumber(),
             'Complement' => $this->data->getComplement(),

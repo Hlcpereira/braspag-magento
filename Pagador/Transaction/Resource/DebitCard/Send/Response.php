@@ -9,11 +9,11 @@
  *
  */
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\DebitCard\Send;
 
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
-use Webjump\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\ResponseInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+use Braspag\Braspag\Factories\ResponseFactory;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
@@ -134,7 +134,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getPaymentSplitPayments()
     {

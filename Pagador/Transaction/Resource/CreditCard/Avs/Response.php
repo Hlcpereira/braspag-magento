@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,21 +8,21 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs;
 
+namespace Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs;
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Avs\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Avs\ResponseInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
-     public function getStatus()
-     {
-         if (! isset($this->response['Status'])) {
-             return false;
-         }
-         return $this->response['Status'];
-     }
+    public function getStatus()
+    {
+        if (! isset($this->response['Status'])) {
+            return false;
+        }
+        return $this->response['Status'];
+    }
 
     public function getReturnCode()
     {

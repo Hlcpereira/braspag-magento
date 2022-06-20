@@ -9,10 +9,10 @@
  *
  */
 
-namespace Webjump\Braspag\Factories;
+namespace Braspag\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Pix\Send\Request;
-use Webjump\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as Data;
+use Braspag\Braspag\Pagador\Transaction\Resource\Pix\Send\Request;
+use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as Data;
 
 class PixRequestFactory
 {

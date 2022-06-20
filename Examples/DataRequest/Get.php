@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,10 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Examples\DataRequest;
 
+namespace Braspag\Braspag\Examples\DataRequest;
 
-use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface;
+use Braspag\Braspag\Pagador\Transaction\Api\Actions\RequestInterface;
 
 class Get implements RequestInterface
 {
@@ -35,7 +36,7 @@ class Get implements RequestInterface
     {
         return $this->paymentId;
     }
-    
+
     public function getAdditionalRequest()
     {
         return false;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,16 +8,17 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit;
 
-use Webjump\Braspag\Factories\PaymentSplitClientHttpFactory;
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\PaymentSplitTransactionPostFactory;
-use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
+namespace Braspag\Braspag\Pagador\Transaction\Command\PaymentSplit;
+
+use Braspag\Braspag\Factories\PaymentSplitClientHttpFactory;
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Factories\PaymentSplitTransactionPostFactory;
+use Braspag\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 /**
  * Class TokenCommand
- * @package Webjump\Braspag\Pagador\Transaction\Command\Auth3Ds20
+ * @package Braspag\Braspag\Pagador\Transaction\Command\Auth3Ds20
  */
 class TransactionPostCommand extends CommandAbstract
 {

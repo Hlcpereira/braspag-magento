@@ -1,9 +1,8 @@
 <?php
 
-namespace Webjump\Braspag\Examples\DataRequest;
+namespace Braspag\Braspag\Examples\DataRequest;
 
-
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\MDD\GeneralRequestInterface;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\MDD\GeneralRequestInterface;
 
 class GeneralMDD implements GeneralRequestInterface
 {
@@ -19,17 +18,17 @@ class GeneralMDD implements GeneralRequestInterface
 
     public function getQtyInstallmentsOrder()
     {
-        return rand(1,6);
+        return rand(1, 6);
     }
 
     public function getSalesOrderChannel()
     {
-        return (rand(0,1)) ? 'Web' : 'Movel';
+        return (rand(0, 1)) ? 'Web' : 'Movel';
     }
 
     public function getCouponCode()
     {
-        return (rand(0,1)) ? 'ABC123' : false;
+        return (rand(0, 1)) ? 'ABC123' : false;
     }
 
     public function getLastOrderDate()
@@ -39,12 +38,12 @@ class GeneralMDD implements GeneralRequestInterface
 
     public function getQtyTryOrder()
     {
-        return rand(1,10);
+        return rand(1, 10);
     }
 
     public function getCustomerFetchSelf()
     {
-        return (bool) rand(0,1);
+        return (bool) rand(0, 1);
     }
 
     public function getVerticalSegment()
@@ -59,26 +58,26 @@ class GeneralMDD implements GeneralRequestInterface
 
     public function getQtyTryCreditCardNumber()
     {
-        return rand(1,10);
+        return rand(1, 10);
     }
 
     public function getEmailFillType()
     {
-        return (rand(0,1)) ? 'Digitado' : 'Colado';
+        return (rand(0, 1)) ? 'Digitado' : 'Colado';
     }
 
     public function getCreditCardNumberFillType()
     {
-        return (rand(0,1)) ? 'Digitado' : 'Colado';
+        return (rand(0, 1)) ? 'Digitado' : 'Colado';
     }
 
     public function getConfirmEmailAddress()
     {
-        return ((bool) rand(0,1)) ? 'SIM' : false;
+        return ((bool) rand(0, 1)) ? 'SIM' : false;
     }
 
     public function getHasGiftCard()
     {
-        return ((bool) rand(0,1)) ? 'SIM' : false;
+        return ((bool) rand(0, 1)) ? 'SIM' : false;
     }
 }

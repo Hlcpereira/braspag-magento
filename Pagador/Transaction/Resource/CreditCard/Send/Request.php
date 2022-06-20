@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,15 +8,15 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
+namespace Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
-use Webjump\Braspag\Factories\AntiFraudRequestFactory;
-use Webjump\Braspag\Factories\CreditCardAvsRequestFactory;
-use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\RequestInterface as AntiFraudRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
+use Braspag\Braspag\Factories\AntiFraudRequestFactory;
+use Braspag\Braspag\Factories\CreditCardAvsRequestFactory;
+use Braspag\Braspag\Factories\PaymentSplitRequestFactory;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\RequestInterface as AntiFraudRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -106,7 +107,8 @@ class Request extends RequestAbstract
 
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
-        if ($paymentSplitRequest && $this->data->getPaymentCapture()
+        if (
+            $paymentSplitRequest && $this->data->getPaymentCapture()
         ) {
             $splitData = PaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
             $this->params['body']['payment']['SplitPayments'] = $splitData['body']['SplitPayments'];

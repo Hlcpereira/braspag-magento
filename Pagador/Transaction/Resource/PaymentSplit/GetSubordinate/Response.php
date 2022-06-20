@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,14 +8,15 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate;
 
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate;
+
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\ResponseInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 /**
  * Class Response
- * @package Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate
+ * @package Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate
  */
 class Response extends ResponseAbstract implements ResponseInterface
 {

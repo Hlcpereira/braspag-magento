@@ -9,7 +9,7 @@
  *
  */
 
-namespace Webjump\Braspag\Pagador\Transaction\Api;
+namespace Braspag\Braspag\Pagador\Transaction\Api;
 
 interface AuthRequestInterface
 {

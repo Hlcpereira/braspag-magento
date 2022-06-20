@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,16 +8,17 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
+namespace Braspag\Braspag\Pagador\Transaction\Command\Sales;
 
-use Webjump\Braspag\Factories\ClientHttpFactory;
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\SalesFactory;
-use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardData;
-use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoCardData;
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitCardData;
+use Braspag\Braspag\Factories\ClientHttpFactory;
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Factories\SalesFactory;
+use Braspag\Braspag\Pagador\Transaction\Command\CommandAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardData;
+use Braspag\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoCardData;
+use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitCardData;
+
 class GetCommand extends CommandAbstract
 {
     protected function execute()

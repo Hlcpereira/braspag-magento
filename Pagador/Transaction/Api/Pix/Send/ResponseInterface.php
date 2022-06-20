@@ -5,7 +5,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-namespace Webjump\Braspag\Pagador\Transaction\Api\Pix\Send;
+namespace Braspag\Braspag\Pagador\Transaction\Api\Pix\Send;
 
 interface ResponseInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,16 +8,17 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit;
 
-use Webjump\Braspag\Factories\PaymentSplitClientHttpFactory;
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\PaymentSplitLockFactory;
-use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
+namespace Braspag\Braspag\Pagador\Transaction\Command\PaymentSplit;
+
+use Braspag\Braspag\Factories\PaymentSplitClientHttpFactory;
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Factories\PaymentSplitLockFactory;
+use Braspag\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 /**
  * Class LockCommand
- * @package Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit
+ * @package Braspag\Braspag\Pagador\Transaction\Command\PaymentSplit
  */
 class LockCommand extends CommandAbstract
 {

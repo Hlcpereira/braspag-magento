@@ -9,21 +9,21 @@
  *
  */
 
-namespace Webjump\Braspag\Factories;
+namespace Braspag\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Response as BoletoResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Pix\Send\Response as PixResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response as CreditCardAntiFraudResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response as CreditCardVelocityReasonsResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response as Auth3Ds20TokenResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2TokenResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response as PaymentSplitResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate\Response as PaymentSplitGetSubordinateResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\Boleto\Send\Response as BoletoResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\Pix\Send\Response as PixResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud\Response as CreditCardAntiFraudResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response as CreditCardVelocityReasonsResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response as Auth3Ds20TokenResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2TokenResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response as PaymentSplitResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate\Response as PaymentSplitGetSubordinateResponse;
 
 class ResponseFactory
 {

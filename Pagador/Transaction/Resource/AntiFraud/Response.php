@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,21 +8,21 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud;
 
+namespace Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud;
 
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\ResponseInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
-     public function getId()
-     {
-         if (! isset($this->response['Id'])) {
-             return false;
-         }
-         return $this->response['Id'];
-     }
+    public function getId()
+    {
+        if (! isset($this->response['Id'])) {
+            return false;
+        }
+        return $this->response['Id'];
+    }
 
     public function getStatus()
     {
