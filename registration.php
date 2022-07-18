@@ -2,6 +2,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::LIBRARY,
-    'Webjump_Braspag',
+    'Braspag_Braspag',
     __DIR__
 );

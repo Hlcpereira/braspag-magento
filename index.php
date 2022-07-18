@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,13 +8,14 @@
  * @link        http://www.webjump.com.br
  *
  */
+
 require_once("vendor/autoload.php");
 
-use Webjump\Braspag\Examples\DataRequest\Boleto;
-use Webjump\Braspag\Examples\DataRequest\CreditCard;
-use Webjump\Braspag\Examples\DataRequest\Actions;
-use Webjump\Braspag\Examples\DataRequest\Debit;
-use Webjump\Braspag\Pagador\Transaction\BraspagFacade;
+use Braspag\Braspag\Examples\DataRequest\Boleto;
+use Braspag\Braspag\Examples\DataRequest\CreditCard;
+use Braspag\Braspag\Examples\DataRequest\Actions;
+use Braspag\Braspag\Examples\DataRequest\Debit;
+use Braspag\Braspag\Pagador\Transaction\BraspagFacade;
 
 
 $facade = new BraspagFacade();

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,16 +8,17 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit;
 
-use Webjump\Braspag\Factories\PaymentSplitOnboardingClientHttpFactory;
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\PaymentSplitCreateSubordinateFactory;
-use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
+namespace Braspag\Braspag\Pagador\Transaction\Command\PaymentSplit;
+
+use Braspag\Braspag\Factories\PaymentSplitOnboardingClientHttpFactory;
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Factories\PaymentSplitCreateSubordinateFactory;
+use Braspag\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 /**
  * Class CreateSubordinateCommand
- * @package Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit
+ * @package Braspag\Braspag\Pagador\Transaction\Command\PaymentSplit
  */
 class CreateSubordinateCommand extends CommandAbstract
 {
@@ -41,7 +43,6 @@ class CreateSubordinateCommand extends CommandAbstract
                 $this->getResponseToArray($response),
                 'paymentSplitGetSubordinate'
             );
-
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             if ($e->hasResponse()) {
                 $statusCode = $e->getResponse()->getStatusCode();

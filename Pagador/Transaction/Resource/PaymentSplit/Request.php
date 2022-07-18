@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as Data;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit;
+
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -32,7 +34,6 @@ class Request extends RequestAbstract
 
         $subordinates = [];
         foreach ($splits->getSubordinates() as $subordinate) {
-
             $subordinateData =  [
                 "SubordinateMerchantId" => $subordinate['subordinate_merchant_id'],
                 "Amount" => $subordinate['amount'],
@@ -40,7 +41,6 @@ class Request extends RequestAbstract
             ];
 
             if (isset($subordinate['fares'])) {
-
                 if (!empty($subordinate['fares']['mdr'])) {
                     $subordinateData["Fares"]['Mdr'] = $subordinate['fares']['mdr'];
                 }
@@ -60,7 +60,7 @@ class Request extends RequestAbstract
         if (!empty($this->data->getOrderTransactionId())) {
             $this->params['headers'] = [
                 'Content-Type' => "application/json",
-                'Authorization' => "Bearer ".$this->data->getAccessToken(),
+                'Authorization' => "Bearer " . $this->data->getAccessToken(),
             ];
 
             $this->params['orderPaymentTransactionId'] = $this->data->getOrderTransactionId();

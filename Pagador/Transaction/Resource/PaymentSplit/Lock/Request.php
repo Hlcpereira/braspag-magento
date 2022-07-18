@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,10 +8,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Lock;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\Lock\RequestInterface as Data;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\Lock;
+
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\Lock\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -33,7 +35,6 @@ class Request extends RequestAbstract
 
         $this->params = $subordinatesRequest = [];
         foreach ($subordinates as $subordinate) {
-
             $subordinatesRequest[] = [
                 "SubordinateMerchantId" => $subordinate,
                 "Locked" => (bool) $isLocked
@@ -45,7 +46,7 @@ class Request extends RequestAbstract
         if (!empty($this->data->getOrderTransactionId())) {
             $this->params['headers'] = [
                 'Content-Type' => "application/json",
-                'Authorization' => "Bearer ".$this->data->getAccessToken(),
+                'Authorization' => "Bearer " . $this->data->getAccessToken(),
             ];
 
             $this->params['orderPaymentTransactionId'] = $this->data->getOrderTransactionId();

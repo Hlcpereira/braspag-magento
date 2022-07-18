@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,15 +8,16 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+namespace Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
+
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\ResponseInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 /**
  * Class Response
- * @package Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send
+ * @package Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send
  */
 class Response extends ResponseAbstract implements ResponseInterface
 {
@@ -228,7 +230,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getPaymentFraudAnalysis()
     {
@@ -244,7 +246,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response|\Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response
+     * @return bool|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response|\Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response
      */
     public function getPaymentSplitPayments()
     {
@@ -260,7 +262,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getVelocityAnalysis()
     {
@@ -276,7 +278,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getAvs()
     {

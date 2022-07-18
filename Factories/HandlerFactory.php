@@ -1,8 +1,8 @@
 <?php
 
-namespace Webjump\Braspag\Factories;
+namespace Braspag\Braspag\Factories;
 
-use Webjump\Braspag\Factories\HandlerFactoryInterface;
+use Braspag\Braspag\Factories\HandlerFactoryInterface;
 
 /**
  *
@@ -20,12 +20,12 @@ class HandlerFactory implements HandlerFactoryInterface
         $stack = \GuzzleHttp\HandlerStack::create();
 
         $stack->push(\GuzzleHttp\Middleware::mapRequest(function (\Psr\Http\Message\RequestInterface $request) {
-            \Webjump\Braspag\Factories\LoggerFactory::make($request);
+            \Braspag\Braspag\Factories\LoggerFactory::make($request);
             return $request;
         }), 'format_request_log');
 
         $stack->push(\GuzzleHttp\Middleware::mapResponse(function (\Psr\Http\Message\ResponseInterface $response) {
-            \Webjump\Braspag\Factories\LoggerFactory::make($response);
+            \Braspag\Braspag\Factories\LoggerFactory::make($response);
             return $response;
         }), 'format_response_log');
 

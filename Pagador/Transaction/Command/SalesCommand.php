@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,15 +8,17 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command;
 
-use Webjump\Braspag\Factories\ClientHttpFactory;
-use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\SalesFactory;
-use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Request as BoletoRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Request as SplitPaymentTransactionPostRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request as DebitRequest;
+namespace Braspag\Braspag\Pagador\Transaction\Command;
+
+use Braspag\Braspag\Factories\ClientHttpFactory;
+use Braspag\Braspag\Factories\ResponseFactory;
+use Braspag\Braspag\Factories\SalesFactory;
+use Braspag\Braspag\Pagador\Transaction\Resource\Boleto\Send\Request as BoletoRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\Pix\Send\Request as PixRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Request as SplitPaymentTransactionPostRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request as DebitRequest;
 
 class SalesCommand extends CommandAbstract
 {
@@ -30,7 +33,7 @@ class SalesCommand extends CommandAbstract
 
         $type = '';
 
-        if ($this->request instanceof BoletoRequest ) {
+        if ($this->request instanceof BoletoRequest) {
             $type = ResponseFactory::CLASS_TYPE_BOLETO;
         }
 
@@ -44,6 +47,10 @@ class SalesCommand extends CommandAbstract
 
         if ($this->request instanceof DebitRequest) {
             $type = ResponseFactory::CLASS_TYPE_DEBIT_CARD;
+        }
+
+        if ($this->request instanceof PixRequest) {
+            $type = ResponseFactory::CLASS_TYPE_PIX;
         }
 
         $this->result = ResponseFactory::make($this->getResponseToArray($response), $type);

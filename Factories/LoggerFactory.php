@@ -1,7 +1,8 @@
 <?php
 
-namespace Webjump\Braspag\Factories;
-use Webjump\Braspag\Factories\LoggerFactoryInterface;
+namespace Braspag\Braspag\Factories;
+
+use Braspag\Braspag\Factories\LoggerFactoryInterface;
 
 /**
  *
@@ -19,7 +20,7 @@ class LoggerFactory implements LoggerFactoryInterface
      */
     public static function make($message)
     {
-        $streamHandler = new \Monolog\Handler\StreamHandler(BP . '/var/log/webjump-braspag-transaction-' . date('Y-m-d') . '.log');
+        $streamHandler = new \Monolog\Handler\StreamHandler(BP . '/var/log/Braspag-braspag-transaction-' . date('Y-m-d') . '.log');
         $logger = new \Monolog\Logger('logger');
         $logger->pushHandler($streamHandler);
 
@@ -43,13 +44,23 @@ class LoggerFactory implements LoggerFactoryInterface
     {
         $headers = "";
         foreach ($request->getHeaders() as $name => $values) {
-            $headers .= $name ." : " . implode(", ", $values)." ";
+            $qtyChar = 0;
+            if ($name == 'MerchantKey') {
+                $qtyChar = strlen($values[0]);
+            }
+            if ($qtyChar == 0) {
+                $headers .= $name . " : " . implode(", ", $values) . " ";
+            }
+            if ($qtyChar > 0) {
+                $repeatChar = str_repeat("*", $qtyChar);
+                $headers .= $name . " : " . $repeatChar;
+            }
         }
-        $patterns = array('#\"cardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"securityCode\":\"(.*?)\"\,#');
-        $replacements = array('"cardNumber":"************$2",', '"securityCode":"***",');
-        
+        $patterns = array('#\"CardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"SecurityCode\"\:\"(.*?)\"\,#');
+        $replacements = array('"CardNumber":"************$2",', '"SecurityCode":"***",');
+
         $bodyString = preg_replace($patterns, $replacements, $request->getBody()->__toString());
-        return $request->getRequestTarget()." >>>>>>>> ".$request->getMethod(). " " . $headers . " " .$bodyString."\n";
+        return $request->getRequestTarget() . " >>>>>>>> " . $request->getMethod() . " " . $headers . " " . $bodyString . "\n";
     }
 
     /**
@@ -60,8 +71,8 @@ class LoggerFactory implements LoggerFactoryInterface
     {
         $headers = "";
         foreach ($response->getHeaders() as $name => $values) {
-            $headers .= $name ." : " . implode(", ", $values)." ";
+            $headers .= $name . " : " . implode(", ", $values) . " ";
         }
-        return $response->getStatusCode()." <<<<<<<< ". " " . $headers . " " .$response->getBody()->__toString()."\n";
+        return $response->getStatusCode() . " <<<<<<<< " . " " . $headers . " " . $response->getBody()->__toString() . "\n";
     }
 }

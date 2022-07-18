@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,39 +8,42 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction;
 
-use Webjump\Braspag\Factories\Auth3Ds20TokenCommandFactory;
-use Webjump\Braspag\Factories\OAuth2TokenCommandFactory;
-use Webjump\Braspag\Factories\PaymentSplitTransactionPostCommandFactory;
-use Webjump\Braspag\Factories\PaymentSplitCreateSubordinateCommandFactory;
-use Webjump\Braspag\Factories\PaymentSplitGetSubordinateCommandFactory;
-use Webjump\Braspag\Factories\Auth3Ds20TokenRequestFactory;
-use Webjump\Braspag\Factories\OAuth2TokenRequestFactory;
-use Webjump\Braspag\Factories\BoletoRequestFactory;
-use Webjump\Braspag\Factories\PaymentRequestFactory;
-use Webjump\Braspag\Factories\CreditCardRequestFactory;
-use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
-use Webjump\Braspag\Factories\PaymentSplitCreateSubordinateRequestFactory;
-use Webjump\Braspag\Factories\PaymentSplitGetSubordinateRequestFactory;
-use Webjump\Braspag\Factories\CaptureCommandFactory;
-use Webjump\Braspag\Factories\DebitCardRequestFactory;
-use Webjump\Braspag\Factories\GetCommandFactory;
-use Webjump\Braspag\Factories\VoidCommandFactory;
-use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Auth3Ds20TokenRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as PaymentSplitCreateSubordinateRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
-use Webjump\Braspag\Factories\SalesCommandFactory;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
+namespace Braspag\Braspag\Pagador\Transaction;
+
+use Braspag\Braspag\Factories\Auth3Ds20TokenCommandFactory;
+use Braspag\Braspag\Factories\OAuth2TokenCommandFactory;
+use Braspag\Braspag\Factories\PaymentSplitTransactionPostCommandFactory;
+use Braspag\Braspag\Factories\PaymentSplitCreateSubordinateCommandFactory;
+use Braspag\Braspag\Factories\PaymentSplitGetSubordinateCommandFactory;
+use Braspag\Braspag\Factories\Auth3Ds20TokenRequestFactory;
+use Braspag\Braspag\Factories\OAuth2TokenRequestFactory;
+use Braspag\Braspag\Factories\BoletoRequestFactory;
+use Braspag\Braspag\Factories\PaymentRequestFactory;
+use Braspag\Braspag\Factories\CreditCardRequestFactory;
+use Braspag\Braspag\Factories\PaymentSplitRequestFactory;
+use Braspag\Braspag\Factories\PaymentSplitCreateSubordinateRequestFactory;
+use Braspag\Braspag\Factories\PaymentSplitGetSubordinateRequestFactory;
+use Braspag\Braspag\Factories\CaptureCommandFactory;
+use Braspag\Braspag\Factories\DebitCardRequestFactory;
+use Braspag\Braspag\Factories\GetCommandFactory;
+use Braspag\Braspag\Factories\VoidCommandFactory;
+use Braspag\Braspag\Factories\PixRequestFactory;
+use Braspag\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Auth3Ds20TokenRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as PaymentSplitCreateSubordinateRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
+use Braspag\Braspag\Factories\SalesCommandFactory;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\SalesCommand;
 
 class BraspagFacade implements FacadeInterface
 {
@@ -153,6 +157,16 @@ class BraspagFacade implements FacadeInterface
     public function sendSplitPaymentGetSubordinate(PaymentSplitGetSubordinateRequest $request)
     {
         $request = PaymentSplitGetSubordinateCommandFactory::make(PaymentSplitGetSubordinateRequestFactory::make($request))->getResult();
+        return $request;
+    }
+
+    /**
+     * @param PixRequest $request
+     * @return SalesCommand
+     */
+    public function sendPix(PixRequest $request)
+    {
+        $request = SalesCommandFactory::make(PixRequestFactory::make($request))->getResult();
         return $request;
     }
 }

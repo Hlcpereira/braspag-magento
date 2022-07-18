@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,13 +8,13 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud;
 
+namespace Braspag\Braspag\Pagador\Transaction\Resource\AntiFraud;
 
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\MDD\GeneralRequestInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\RequestInterface as Data;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\MDD\GeneralRequestInterface;
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -33,7 +34,7 @@ class Request extends RequestAbstract
     {
         $this->params = [
             'Sequence' => $this->data->getSequence(),
-            'SequenceCriteria' =>$this->data->getSequenceCriteria(),
+            'SequenceCriteria' => $this->data->getSequenceCriteria(),
             'FingerPrintId' => $this->data->getFingerPrintId(),
             'CaptureOnLowRisk' => $this->data->getCaptureOnLowRisk(),
             'VoidOnHighRisk' => $this->data->getVoidOnHighRisk(),
@@ -70,9 +71,8 @@ class Request extends RequestAbstract
         $result  = [];
         /** @var AntiFraudItemsRequest $item */
         foreach ($items as $item) {
-
             if (! $item instanceof AntiFraudItemsRequest) {
-                throw new \Exception ('items params not valid, is have must instance of "\Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface"');
+                throw new \Exception('items params not valid, is have must instance of "\Braspag\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface"');
             }
 
             $result[] = [
@@ -188,7 +188,7 @@ class Request extends RequestAbstract
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
-                'Value' => substr((($data->getProvider()) ? $data->getProvider() : 'Webjump'), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => substr((($data->getProvider()) ? $data->getProvider() : 'Braspag'), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,

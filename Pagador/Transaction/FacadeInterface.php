@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,20 +8,22 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction;
 
-use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as ActionsAuthRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as PaymentSplitCreateSubordinateRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
-use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
+namespace Braspag\Braspag\Pagador\Transaction;
+
+use Braspag\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as ActionsAuthRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as PaymentSplitCreateSubordinateRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
+use Braspag\Braspag\Pagador\Transaction\Command\SalesCommand;
 
 interface FacadeInterface
 {
@@ -84,4 +87,10 @@ interface FacadeInterface
      * @return mixed
      */
     public function sendSplitPaymentGetSubordinate(PaymentSplitGetSubordinateRequest $request);
+
+    /**
+     * @param PixRequest $request
+     * @return SalesCommand
+     */
+    public function sendPix(PixRequest $request);
 }

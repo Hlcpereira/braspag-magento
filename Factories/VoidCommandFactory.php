@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -7,11 +8,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Factories;
 
+namespace Braspag\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
-use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use Braspag\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
+use Braspag\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
 class VoidCommandFactory
 {
