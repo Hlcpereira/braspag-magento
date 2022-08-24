@@ -1,5 +1,5 @@
 {
-  "name": "Braspag/braspagpagador-sdk-adapter",
+  "name": "braspag/braspagpagador-sdk-adapter",
   "type": "library",
   "description": "Braspag API PHP SDK",
   "keywords": [
@@ -21,7 +21,7 @@
   ],
   "require": {
     "php": ">=5.5",
-    "guzzlehttp/guzzle": "~6.0"
+    "guzzlehttp/guzzle": ">=6.0"
   },
   "autoload": {
     "psr-4": {
