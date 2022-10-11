@@ -19,6 +19,7 @@ use Braspag\Braspag\Pagador\Transaction\Resource\Pix\Send\Request as PixRequest;
 use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
 use Braspag\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Request as SplitPaymentTransactionPostRequest;
 use Braspag\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request as DebitRequest;
+use Braspag\Braspag\Pagador\Transaction\Resource\Voucher\Send\Request as VoucherRequest;
 
 class SalesCommand extends CommandAbstract
 {
@@ -51,6 +52,10 @@ class SalesCommand extends CommandAbstract
 
         if ($this->request instanceof PixRequest) {
             $type = ResponseFactory::CLASS_TYPE_PIX;
+        }
+
+        if ($this->request instanceof VoucherRequest) {
+            $type = ResponseFactory::CLASS_TYPE_VOUCHER;
         }
 
         $this->result = ResponseFactory::make($this->getResponseToArray($response), $type);

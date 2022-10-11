@@ -90,7 +90,7 @@ class Request extends RequestAbstract
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
                     $creditCardParamKey => $this->getCreditCardParams(),
-                    'extraDataCollection' => $this->data->getPaymentExtraDataCollection()
+                    'extraDataCollection' => $this->getPaymentExtraDataCollection()
                 ]
             ]
         ];
@@ -169,5 +169,11 @@ class Request extends RequestAbstract
             'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
             'brand' => $this->data->getPaymentCreditCardBrand(),
         ];
+    }
+
+    protected function getPaymentExtraDataCollection()
+    {
+        $extDataCollection = array(array('Name' => 'Plataforma', 'Value' => 'Magento'));
+        return $extDataCollection;
     }
 }
