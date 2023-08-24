@@ -50,13 +50,17 @@ class Request extends RequestAbstract
                 'ReturnsAccepted' => $this->data->getCartReturnsAccepted(),
                 'Items' => $this->getItems($this->data->getCartItems())
             ],
-            'MerchantDefinedFields' => $this->getMDDs($this->data->getMerchantDefinedFields()),
-            'Shipping' => [
+                'Shipping' => [
                 'Addressee' => $this->data->getCartShippingAddressee(),
                 'Method' => $this->data->getCartShippingMethod(),
                 'Phone' => $this->data->getCartShippingPhone()
             ],
         ];
+
+        $hasMDDS =  $this->getMDDs($this->data->getMerchantDefinedFields());
+        if ($hasMDDS) {
+            $this->params['MerchantDefinedFields'] = $this->getMDDs($this->data->getMerchantDefinedFields());
+        }
 
         return $this;
     }
@@ -105,100 +109,92 @@ class Request extends RequestAbstract
 
     private function getMDDs(GeneralRequestInterface $data)
     {
+
+        $storeCode = $data->getStoreCode();
+
         $mddCollection = [
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_NAME,
                 'Value' => substr($data->getCustomerName(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_LOGGED,
-                'Value' => substr($data->getCustomerIsLogged(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_PURCHASE_BY_THIRD,
-                'Value' => substr($data->getPurchaseByThird(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
                 'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_CHANNEL,
                 'Value' => substr($data->getSalesOrderChannel(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_PRODUCT_CATEGORY,
-                'Value' => substr($data->getProductCategory(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD,
-                'Value' => substr($data->getShippingMethod(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_FETCH_SELF,
                 'Value' => substr($data->getCustomerFetchSelf(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_STORE_CODE,
-                'Value' => substr($data->getStoreCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_COUPON_CODE,
-                'Value' => substr($data->getCouponCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_HAS_GIFT_CARD,
-                'Value' => substr($data->getHasGiftCard(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD,
-                'Value' => substr($data->getSecondPaymentMethod(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_PAYMENT_METHOD_QTY,
-                'Value' => substr($data->getPaymentMethodQTY(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD_AMOUNT,
-                'Value' => substr($data->getShippingMethodAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD_AMOUNT,
-                'Value' => substr($data->getSecondPaymentMethodAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_AMOUNT,
-                'Value' => substr($data->getSalesOrderAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
                 'Id' => GeneralRequestInterface::MDD_KEY_QTY_INSTALLMENTS_ORDER,
                 'Value' => substr($data->getQtyInstallmentsOrder(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_CARD_IS_PRIVATE_LABEL,
-                'Value' => substr($data->getCardIsPrivateLabel(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
-                'Value' => substr($data->getCustomerIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_TELEPHONE,
-                'Value' => substr($data->getCustomerTelephone(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_STORE_IDENTITY,
-                'Value' => substr($data->getStoreIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
-                'Value' => substr((($data->getProvider()) ? $data->getProvider() : 'Braspag'), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,
-                'Value' => substr($data->getCustomerIsRisk(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_VIP,
-                'Value' => substr($data->getCustomerIsVIP(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ],
+                'Id' => GeneralRequestInterface::MDD_KEY_PLATAFORM_NAME,
+                'Value' => substr($data->getPlataformName(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            ]
         ];
+
+        if ($data->getStoreCode() && $data->getCustomerFetchSelf() == 'Sim') {
+            $mddCollection[] = [
+                'Id' => GeneralRequestInterface::MDD_KEY_STORE_CODE,
+                'Value' => substr($data->getStoreCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            ];
+        }
+
+       // if ($data->getCustomerIdentity()) {
+          //  $mddCollection[] =  [
+            //    'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
+            //    'Value' => substr($data->getCustomerIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+           // ];
+       // }
+
+        if ($data->getStoreIdentity()) {
+            $mddCollection[] =  [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
+                'Value' => substr($data->getStoreIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            ];
+        }
+
+        //  if ($data->getProvider()) {
+           // $mddCollection[] = [
+            //    'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
+            //    'Value' => substr((($data->getProvider()) ? $data->getProvider() : 'Braspag'), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            // ];
+         // }
+
+        // if ($data->getCustomerIsRisk()) {
+         //   $mddCollection[] = 
+         //   [
+          //      'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,
+          //      'Value' => substr($data->getCustomerIsRisk(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+          //  ];
+         //  }
+
+        //if ($data->getCustomerIsVIP()) {
+        //    $mddCollection[] = 
+         //   [
+         //       'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_VIP,
+          //      'Value' => substr($data->getCustomerIsVIP(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+          //  ];
+         // }
+       
+        if ($data->getCouponCode()) {
+            $mddCollection[] = 
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_COUPON_CODE,
+                'Value' => substr($data->getCouponCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            ];
+        }
+
+        if ($data->getVerticalSegment()) {
+            $mddCollection[] = 
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_VERTICAL_SEGMENT,
+                'Value' => substr($data->getVerticalSegment(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+            ];
+        }
+
 
         $result = [];
         foreach ($mddCollection as $mdd) {
