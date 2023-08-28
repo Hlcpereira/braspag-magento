@@ -20,6 +20,7 @@ use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestI
 use Braspag\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Voucher\Send\RequestInterface as VoucherRequest;
 use Braspag\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Braspag\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
 use Braspag\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
@@ -93,4 +94,10 @@ interface FacadeInterface
      * @return SalesCommand
      */
     public function sendPix(PixRequest $request);
+
+    /**
+     * @param VoucherRequest $request
+     * @return SalesCommand
+     */
+    public function sendVoucher(VoucherRequest $request);
 }

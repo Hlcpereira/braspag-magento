@@ -29,6 +29,7 @@ use Braspag\Braspag\Factories\DebitCardRequestFactory;
 use Braspag\Braspag\Factories\GetCommandFactory;
 use Braspag\Braspag\Factories\VoidCommandFactory;
 use Braspag\Braspag\Factories\PixRequestFactory;
+use Braspag\Braspag\Factories\VoucherRequestFactory;
 use Braspag\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
@@ -39,6 +40,7 @@ use Braspag\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestI
 use Braspag\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
 use Braspag\Braspag\Pagador\Transaction\Api\Pix\Send\RequestInterface as PixRequest;
+use Braspag\Braspag\Pagador\Transaction\Api\Voucher\Send\RequestInterface as VoucherRequest;
 use Braspag\Braspag\Factories\SalesCommandFactory;
 use Braspag\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Braspag\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
@@ -167,6 +169,16 @@ class BraspagFacade implements FacadeInterface
     public function sendPix(PixRequest $request)
     {
         $request = SalesCommandFactory::make(PixRequestFactory::make($request))->getResult();
+        return $request;
+    }
+
+    /**
+     * @param VoucherRequest $request
+     * @return SalesCommand
+     */
+    public function sendVoucher(VoucherRequest $request)
+    {
+        $request = SalesCommandFactory::make(VoucherRequestFactory::make($request))->getResult();
         return $request;
     }
 }

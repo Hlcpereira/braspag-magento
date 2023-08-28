@@ -33,7 +33,7 @@ class LoggerFactory implements LoggerFactoryInterface
             $log = static::makeLogResponse($message);
         }
 
-        $logger->addInfo($log);
+        $logger->info($log);
     }
 
     /**

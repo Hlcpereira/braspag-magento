@@ -24,6 +24,7 @@ use Braspag\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2
 use Braspag\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
 use Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response as PaymentSplitResponse;
 use Braspag\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate\Response as PaymentSplitGetSubordinateResponse;
+use Braspag\Braspag\Pagador\Transaction\Resource\Voucher\Send\Response as VoucherResponse;
 
 class ResponseFactory
 {
@@ -43,6 +44,8 @@ class ResponseFactory
     const CLASS_TYPE_BOLETO_PAYMENT_SPLIT = 'boletoPaymentSplit';
     const CLASS_TYPE_PIX = 'pix';
     const CLASS_TYPE_PIX_PAYMENT_SPLIT = 'pixPaymentSplit';
+    const CLASS_TYPE_VOUCHER = 'voucher';
+
 
     public static function make(array $data, $type)
     {
@@ -104,6 +107,10 @@ class ResponseFactory
 
         if ($type === self::CLASS_TYPE_PIX) {
             return new PixResponse($data);
+        }
+
+        if ($type === self::CLASS_TYPE_VOUCHER) {
+            return new VoucherResponse($data);
         }
     }
 }
