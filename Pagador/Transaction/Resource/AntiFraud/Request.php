@@ -149,12 +149,13 @@ class Request extends RequestAbstract
            // ];
        // }
 
-        if ($data->getStoreIdentity()) {
-            $mddCollection[] =  [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
-                'Value' => substr($data->getStoreIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
-            ];
-        }
+        // if ($data->getStoreIdentity()) {
+        //    $mddCollection[] =  [
+        //        'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
+        //       'Value' => substr($data->getStoreIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+        //   ];
+        //  }
+
 
         //  if ($data->getProvider()) {
            // $mddCollection[] = [
