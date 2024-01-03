@@ -119,6 +119,13 @@ class Request extends RequestAbstract
             $this->params['body']['payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
         }
 
+        $device = $this->data->getFromDevice();
+        //if (isset($device)  && strtoupper($this->data->getPaymentProvider()) == 'MASTERCARD') {
+        if (isset($device) ) {
+            $this->params['body']['payment']['InitiatedTransactionIndicator.Category'] = 'C1';
+            $this->params['body']['payment']['InitiatedTransactionIndicator.Subcategory'] = 'CredentialsOnFile';
+        }
+
         return $this;
     }
 
