@@ -51,6 +51,7 @@ class Request extends RequestAbstract
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
                     'DebitCard' => $this->getDebitCardParams(),
                     'doSplit' => $this->data->getPaymentDoSplit(),
+                    'Partner' => 'MAG',
                     'Authenticate' => true
                 ]
             ]

@@ -67,6 +67,7 @@ class Request extends RequestAbstract
                     'ExpirationDate' => $this->data->getPaymentExpirationDate(),
                     'Identification' => $this->data->getPaymentIdentification(),
                     'Instructions' => $this->data->getPaymentInstructions(),
+                    'Partner' => 'MAG',
                     'doSplit' => $this->data->getPaymentDoSplit()
                 ]
             ]

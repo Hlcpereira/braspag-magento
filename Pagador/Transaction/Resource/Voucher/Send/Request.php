@@ -75,6 +75,7 @@ class Request extends RequestAbstract
                     'Installments' => 1,
                     'Authenticate' => false,
                     'ReturnUrl' => 'http://www.braspag.com.br',
+                    'Partner' => 'MAG',
                     'DebitCard' => [
                         'CardNumber' => $this->data->getPaymentVoucherCardNumber(),
                         'Holder' => $this->data->getPaymentVoucherHolder(),

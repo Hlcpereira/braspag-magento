@@ -47,6 +47,7 @@ class Request extends RequestAbstract
                     'Type' => Data::PAYMENT_TYPE,
                     'Provider' => $this->data->getPaymentProvider(),
                     'Amount' => $this->data->getPaymentAmount(),
+                    'Partner' => 'MAG',
                     'QrCodeExpiration' => $this->data->getPaymentExpirationDate() ? (int)$this->data->getPaymentExpirationDate() * 60 : '86400'
                 ]
             ]
