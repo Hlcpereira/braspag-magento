@@ -89,6 +89,7 @@ class Request extends RequestAbstract
                     'authenticate' => $this->data->getPaymentAuthenticate(),
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
+                    'Partner' => 'MAG',
                     $creditCardParamKey => $this->getCreditCardParams(),
                     'extraDataCollection' => $this->getPaymentExtraDataCollection()
                 ]
