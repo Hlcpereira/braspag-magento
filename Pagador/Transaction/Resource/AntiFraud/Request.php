@@ -86,7 +86,7 @@ class Request extends RequestAbstract
                 'ObscenitiesHedge' => $item->getObscenitiesHedge(),
                 'PhoneHedge' => $item->getPhoneHedge(),
                 'Name' => $item->getName(),
-                'Quantity' => $item->getQuantity(),
+                'Quantity' => preg_replace('/[^0-9]/', '', $item->getQuantity()),
                 'Sku' => $item->getSku(),
                 'UnitPrice' => $item->getUnitPrice(),
                 'Risk' => $item->getRisk(),
