@@ -195,6 +195,19 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CreditCard']['CardToken'];
     }
 
+
+    /**
+     * @return bool
+     */
+    public function getPaymentCardExpirationDate()
+    {
+        if (! isset($this->response['Payment']['CreditCard']['ExpirationDate'])) {
+            return false;
+        }
+        return $this->response['Payment']['CreditCard']['ExpirationDate'];
+    }
+ 
+
     /**
      * @return bool
      */

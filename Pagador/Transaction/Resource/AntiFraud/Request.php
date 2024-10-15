@@ -57,6 +57,21 @@ class Request extends RequestAbstract
             ],
         ];
 
+
+
+        if ($this->data->hasClearSale()) {
+            $this->params['ClearSale'] = [
+                'FingerPrintId' =>  $this->data->getClearSaleFingerprint()
+            ];
+            $this->params['body']['customer'] = [
+                'Phone' => $this->data->getCartShippingPhone(),
+                'Mobile' => $this->data->getCartShippingPhone(),
+                'Workphone' => $this->data->getCartShippingPhone()
+            ];
+
+        }
+           
+
         $hasMDDS =  $this->getMDDs($this->data->getMerchantDefinedFields());
         if ($hasMDDS) {
             $this->params['MerchantDefinedFields'] = $this->getMDDs($this->data->getMerchantDefinedFields());

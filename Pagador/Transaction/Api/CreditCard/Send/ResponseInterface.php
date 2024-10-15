@@ -58,4 +58,6 @@ interface ResponseInterface
     public function getVelocityAnalysis();
 
     public function getAvs();
+
+    public function getPaymentCardExpirationDate();
 }
